@@ -148,7 +148,7 @@ class MainActivity : AppCompatActivity() {
                 }
 
                 var bytesProcessed: Long = 0
-                var lastProgress = -1 // ТҮЗЕТІЛДІ: UI трафигін бақылаушы айнымалы
+                var lastProgress = -1 
                 val buffer = ByteArray(4096)
 
                 ZipInputStream(FileInputStream(zipFile)).use { zis ->
@@ -171,7 +171,6 @@ class MainActivity : AppCompatActivity() {
                                     
                                     if (totalUncompressedSize > 0) {
                                         val progress = ((bytesProcessed * 100) / totalUncompressedSize).toInt()
-                                        // ТҮЗЕТІЛДІ: Пайыз нақты өзгергенде ғана UI-ды жаңарту (Throttling)
                                         if (progress > lastProgress) {
                                             lastProgress = progress
                                             withContext(Dispatchers.Main) {
